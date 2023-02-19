@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 148064471}
   - component: {fileID: 148064476}
   - component: {fileID: 148064477}
-  - component: {fileID: 148064478}
   - component: {fileID: 148064479}
   m_Layer: 0
   m_Name: Player
@@ -262,18 +261,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!114 &148064478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148064466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &148064479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +286,35 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 8a0134ac216b5354387557d60ff39b8f, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: 5b96befc-3ed0-4df0-908b-491d40e17175
+    m_ActionName: GamePlay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 47134bbf-af82-441f-b780-e3fe7984aaab
+    m_ActionName: GamePlay/CameraRotateLeft[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 698e6cda-59f1-4cc5-9847-81a63213c280
+    m_ActionName: GamePlay/CameraRotateRight[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 900c8ffc-95a4-4644-ab33-121317900cde
+    m_ActionName: Menu/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: GamePlay
@@ -442,9 +457,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 367643411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
+  m_Script: {fileID: 11500000, guid: c216ff08d97e4bf4c9a3ff6097205a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &425229237
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,9 +782,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 489130770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
+  m_Script: {fileID: 11500000, guid: c216ff08d97e4bf4c9a3ff6097205a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &591967469
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,9 +923,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 591967469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
+  m_Script: {fileID: 11500000, guid: c216ff08d97e4bf4c9a3ff6097205a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,9 +1236,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 781900104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
+  m_Script: {fileID: 11500000, guid: c216ff08d97e4bf4c9a3ff6097205a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &814508027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,9 +1377,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 814508027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b49076471b27b458b2f7922a464048, type: 3}
+  m_Script: {fileID: 11500000, guid: c216ff08d97e4bf4c9a3ff6097205a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &884653763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,9 +1404,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884653763}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 814508028}
