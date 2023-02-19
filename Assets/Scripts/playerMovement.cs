@@ -29,6 +29,18 @@ public class playerMovement : MonoBehaviour
     {
         moveVal = value.Get<Vector2>();
     }
+    //logic to get inputs that rotate the character
+    bool rtLeft;
+    bool rtRight;
+    void OnCameraRotateLeft(InputValue value)
+    {
+        rtLeft = value.isPressed;
+    }
+
+    void OnCameraRotateRight(InputValue value)
+    {
+        rtRight = value.isPressed;
+    }
 
     //defines character controller object to use
     void Start()
@@ -39,6 +51,14 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rtRight)
+        {
+            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
+        }
+        if (rtLeft)
+        {
+            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
+        }
 
         //gets player input and converts to movement
         Vector3 PlayerInput = new Vector3

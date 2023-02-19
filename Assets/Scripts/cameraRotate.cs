@@ -29,21 +29,5 @@ public class cameraRotate : MonoBehaviour
         {
             transform.Rotate(Vector3.up, -50 * Time.deltaTime);
         }
-        /*
-        //if (Input.GetKeyDown(KeyCode.E)) this line will only read a single key press 
-        if (Input.GetKey(KeyCode.E)) //this line will send input while the key is held
-        {
-            transform.Rotate(Vector3.up, 25 * Time.deltaTime); //this line allows for a smooth rotation
-            //transform.Rotate(Vector3.up, 90); //if this line was used it would snap 90 degrees
-        }
-
-        //else if (Input.GetKeyDown(KeyCode.Q))
-        else if (Input.GetKey(KeyCode.Q))
-        {
-            transform.Rotate(Vector3.up, -25 * Time.deltaTime);
-            //transform.Rotate(Vector3.up, -90);
-        }
-        */
     }
-
 }
