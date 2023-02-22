@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 720480359}
   m_Layer: 0
   m_Name: Terrain_0_0_d36c0f83-b2ee-4944-8a4e-1a53d7c04100
-  m_TagString: Environment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
