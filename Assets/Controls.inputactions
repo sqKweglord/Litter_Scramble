@@ -168,6 +168,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c4a8acc9-9b2d-429a-a564-d896adc68df4",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "CameraRotateLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a1b184f4-0083-4ef5-ae18-0193e4e4f29e",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -184,6 +195,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "CameraRotateRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "899ea86a-452e-484e-a90c-3ba5f6a51b88",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
                     "action": "CameraRotateRight",
                     "isComposite": false,
                     "isPartOfComposite": false
