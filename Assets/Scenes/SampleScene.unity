@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 11297086}
   - component: {fileID: 11297085}
   - component: {fileID: 11297084}
+  - component: {fileID: 11297090}
   m_Layer: 0
   m_Name: TurtleSprite
   m_TagString: Untagged
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezexzAxis: 1
+  freezexzAxis: 0
 --- !u!54 &11297085
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -258,6 +259,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
+--- !u!65 &11297090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11297083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 6.1232336e-17}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &148064466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1643,7 @@ GameObject:
   - component: {fileID: 1034760780}
   - component: {fileID: 1034760779}
   - component: {fileID: 1034760784}
+  - component: {fileID: 1034760785}
   m_Layer: 0
   m_Name: Birdsprite
   m_TagString: Untagged
@@ -1665,7 +1680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Walkarea: {fileID: 1453561671}
-  moveSpeed: 6
+  moveSpeed: 3
   isWalking: 0
   walkTime: 2
   waitTime: 1
@@ -1730,7 +1745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034760777}
   m_LocalRotation: {x: -0, y: 0.34162262, z: -0, w: 0.9398372}
-  m_LocalPosition: {x: -1.1, y: 0.383, z: 5.82}
+  m_LocalPosition: {x: -1.1, y: 0.501, z: 5.82}
   m_LocalScale: {x: 1.4467486, y: 1.4467486, z: 1.4467486}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1749,7 +1764,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezexzAxis: 1
+  freezexzAxis: 0
+--- !u!65 &1034760785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034760777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9999999, y: 3, z: 0.000000029802322}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!850595691 &1058427535
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1929,6 +1957,7 @@ GameObject:
   - component: {fileID: 1406327417}
   - component: {fileID: 1406327416}
   - component: {fileID: 1406327415}
+  - component: {fileID: 1406327421}
   m_Layer: 0
   m_Name: BunnySprite
   m_TagString: Untagged
@@ -1948,7 +1977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezexzAxis: 1
+  freezexzAxis: 0
 --- !u!54 &1406327416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2050,6 +2079,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
+--- !u!65 &1406327421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406327414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9999999, y: 3, z: 0.000000029802322}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &1453561670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,6 +2286,7 @@ GameObject:
   - component: {fileID: 1987007379}
   - component: {fileID: 1987007378}
   - component: {fileID: 1987007377}
+  - component: {fileID: 1987007383}
   m_Layer: 0
   m_Name: RacoonSprite
   m_TagString: Untagged
@@ -2263,7 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezexzAxis: 1
+  freezexzAxis: 0
 --- !u!54 &1987007378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2365,6 +2408,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
+--- !u!65 &1987007383
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987007376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 6.1232336e-17}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1001 &2003536258
 PrefabInstance:
   m_ObjectHideFlags: 0

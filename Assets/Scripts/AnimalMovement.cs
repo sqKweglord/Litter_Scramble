@@ -16,6 +16,7 @@ public class AnimalMovement : MonoBehaviour
     public float waitTime;
     private float waitCounter;
     private int walkDirection;
+    private float lastDirection;
     public int speedMod;
     private Rigidbody MyRigidbody;
     //defines Object spawnpoint
@@ -102,9 +103,20 @@ public class AnimalMovement : MonoBehaviour
     public void ChooseDirection() 
     {
         //RNG generation
+        lastDirection = walkDirection;
         walkDirection = Random.Range(0, 3);//randomizes walk direction
         speedMod = Random.Range(0, 2); //randomizes walk distance
         isWalking = true;
         walkCounter = walkTime;
+        if (walkDirection == lastDirection) { 
+            if(walkDirection == 3)
+            {
+                walkDirection = 0;
+            }
+            else 
+            { 
+                walkDirection++;
+            }
+        }
     }
 }
