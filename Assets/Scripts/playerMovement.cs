@@ -1,6 +1,6 @@
 //This script controls the player's movement
 
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
@@ -22,25 +22,6 @@ public class playerMovement : MonoBehaviour
     private Vector3 CurrentMoveVelocity;
     private Vector3 MoveDampVelocity;
 
-    //input from input system
-    private Vector2 moveVal;
-
-    void OnMove(InputValue value)
-    {
-        moveVal = value.Get<Vector2>();
-    }
-    //logic to get inputs that rotate the character
-    bool rtLeft;
-    bool rtRight;
-    void OnCameraRotateLeft(InputValue value)
-    {
-        rtLeft = value.isPressed;
-    }
-
-    void OnCameraRotateRight(InputValue value)
-    {
-        rtRight = value.isPressed;
-    }
 
     //defines character controller object to use
     void Start()
@@ -51,21 +32,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rtRight)
-        {
-            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
-        }
-        if (rtLeft)
-        {
-            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
-        }
-
+    
         //gets player input and converts to movement
         Vector3 PlayerInput = new Vector3
         {
-            x = -moveVal.x, //flipped for holofil
+            x = Input.GetAxisRaw("Horizontal"),
             y = 0f,
-            z = moveVal.y
+            z = Input.GetAxisRaw("Vertical")
         };
         
 
@@ -107,7 +80,6 @@ public class playerMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
         }
-        
 
     }
 }
