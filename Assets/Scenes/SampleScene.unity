@@ -257,7 +257,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
 --- !u!65 &11297090
 BoxCollider:
@@ -422,7 +422,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
+  m_Actions: {fileID: -944628639613478452, guid: 52e5edd1543459747abdd0a3172c0707,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &186380832
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,55 +576,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186380832}
   m_CullTransparentMesh: 1
-
-  m_Actions: {fileID: -944628639613478452, guid: 52e5edd1543459747abdd0a3172c0707,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 8a0134ac216b5354387557d60ff39b8f, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-    m_ActionId: 5b96befc-3ed0-4df0-908b-491d40e17175
-    m_ActionName: GamePlay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 47134bbf-af82-441f-b780-e3fe7984aaab
-    m_ActionName: GamePlay/CameraRotateLeft[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 698e6cda-59f1-4cc5-9847-81a63213c280
-    m_ActionName: GamePlay/CameraRotateRight[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 900c8ffc-95a4-4644-ab33-121317900cde
-    m_ActionName: Menu/New action
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
-  m_DefaultActionMap: GamePlay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
-
 --- !u!1 &367643411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
 --- !u!65 &1406327421
 BoxCollider:
@@ -2406,7 +2375,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696462016}
   m_CullTransparentMesh: 1
---- !u!1 &1987007376
+--- !u!1 &1715649395
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2414,37 +2383,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-
-  - component: {fileID: 2073949664}
-  - component: {fileID: 2073949663}
+  - component: {fileID: 1715649397}
+  - component: {fileID: 1715649396}
   m_Layer: 0
   m_Name: TimerManager
-
-  - component: {fileID: 1987007382}
-  - component: {fileID: 1987007381}
-  - component: {fileID: 1987007380}
-  - component: {fileID: 1987007379}
-  - component: {fileID: 1987007378}
-  - component: {fileID: 1987007377}
-  - component: {fileID: 1987007383}
-  m_Layer: 0
-  m_Name: RacoonSprite
-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-
---- !u!114 &1987007377
-
+--- !u!114 &1715649396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-
-  m_GameObject: {fileID: 2073949662}
+  m_GameObject: {fileID: 1715649395}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ab0dcf883a913469c353b333b0a499, type: 3}
@@ -2453,17 +2407,45 @@ MonoBehaviour:
   timerText: {fileID: 186380834}
   currentTime: 181
   countDown: 1
-  hasLimit: 1
+  hasLimit: 0
   timerLimit: 0
---- !u!4 &2073949664
-
-  m_GameObject: {fileID: 1987007376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freezexzAxis: 0
+--- !u!4 &1715649397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715649395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.10160017, y: -1.1531534, z: -0.43582487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1987007376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987007384}
+  - component: {fileID: 1987007378}
+  - component: {fileID: 1987007383}
+  - component: {fileID: 1987007381}
+  - component: {fileID: 1987007380}
+  - component: {fileID: 1987007379}
+  - component: {fileID: 1987007385}
+  m_Layer: 0
+  m_Name: RacoonSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!54 &1987007378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2550,23 +2532,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987007376}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1987007382
-
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-
-  m_GameObject: {fileID: 1987007376}
-  m_LocalRotation: {x: -0, y: 0.34162262, z: -0, w: 0.9398372}
-  m_LocalPosition: {x: -4.11, y: 0.42, z: -0.67}
-  m_LocalScale: {x: 0.8992059, y: 0.8992059, z: 0.8992059}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
 --- !u!65 &1987007383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2580,4 +2545,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3, z: 6.1232336e-17}
   m_Center: {x: 0, y: 0.3, z: 0}
-
+--- !u!4 &1987007384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987007376}
+  m_LocalRotation: {x: 0, y: 0.3416265, z: 0, w: 0.93983585}
+  m_LocalPosition: {x: -4, y: 1.081, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 39.952, z: 0}
+--- !u!114 &1987007385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987007376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69bc08f394fe6a545b7af73639d219ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezexzAxis: 0
