@@ -7,7 +7,9 @@ public class SpawnLitter : MonoBehaviour
     public GameObject ObjectToSpawn;
     levelTimer timer;
 
-    private bool spawned = false;
+    //private bool spawned = false;
+    private int spawnedCount = 0;
+    private int spawnedMax = 1;
 
 
     // Start is called before the first frame update
@@ -18,35 +20,50 @@ public class SpawnLitter : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Ceil(timer.currentTime) % 10 == 0)
+        if (Mathf.Ceil(timer.currentTime) % 5 == 0)
         {
-            if (!spawned)
+            if (spawnedCount < spawnedMax)
             {
+
                 Spawn();
-                spawned = true;
-            }
+                spawnedCount++;
+                //spawned = true;
+            } 
         } else
         {
-            spawned = false;
+            //spawned = false;
+            spawnedCount = 0;
+            spawnedMax = Random.Range(2, 4);
         }
     }
 
     private bool emptySpace(Vector3 location)
     {
         
-        Collider[] collider = Physics.OverlapSphere(location, 1);
+        Collider[] collider = Physics.OverlapSphere(location, 1.5f);
 
         if (collider.Length == 0)
         {
             Debug.Log("space found");
             return true;
-        } else
+        } else 
         {
-            Debug.Log("no space found");
-            return false;
+            return checkArray(collider, "Environment");
         }
-        
-        //return true;
+    }
+
+    private bool checkArray(Collider[] colliders, string tag)
+    {
+        bool hasTag = false;
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if(colliders[i].tag == tag)
+            {
+                hasTag = true;
+                break;
+            }
+        }
+        return hasTag;
     }
 
     private void objectSpawn(GameObject litter, Vector3 location)
