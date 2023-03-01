@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnLitter : MonoBehaviour
@@ -7,12 +5,12 @@ public class SpawnLitter : MonoBehaviour
     public GameObject ObjectToSpawn;
     levelTimer timer;
 
-    //private bool spawned = false;
+    //used for spawning a dynamic number of litter every 5 seconds
     private int spawnedCount = 0;
-    private int spawnedMax = 1;
+    private int spawnedMax = 5;
 
 
-    // Start is called before the first frame update
+    // sets the timer variable
     void Start()
     {
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
@@ -20,82 +18,81 @@ public class SpawnLitter : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Ceil(timer.currentTime) % 5 == 0)
+        if ((timer.currentTime != 0) && (Mathf.Ceil(timer.currentTime) % 5 == 0))
         {
             if (spawnedCount < spawnedMax)
             {
-
                 Spawn();
-                spawnedCount++;
-                //spawned = true;
+                spawnedCount++; 
             } 
         } else
         {
-            //spawned = false;
-            spawnedCount = 0;
-            spawnedMax = Random.Range(2, 4);
+            if (spawnedCount != 0)
+            {
+                spawnedCount = 0;
+                spawnedMax = Random.Range(2, 4);
+            }
         }
     }
 
-    private bool emptySpace(Vector3 location)
+    //generates the spawn location and spawns the object there
+    public void Spawn()
     {
-        
-        Collider[] collider = Physics.OverlapSphere(location, 1.5f);
+        Vector3 location;
+        do
+        {
+            location = GenLocation();
+        } while (!EmptySpace(location));
+
+        ObjectSpawn(ObjectToSpawn, location);
+
+    }
+
+    //spawns the provided object at a provided location
+    private void ObjectSpawn(GameObject litter, Vector3 location)
+    {
+        Instantiate(litter, location, transform.rotation, transform);
+    }
+
+    //returns a vector of the spawn location
+    private Vector3 GenLocation()
+    {
+        float xrange = 14.5f;
+        float zrange = 14.5f;
+        float y_val = 1f;
+
+        return new Vector3(Random.Range(-xrange, xrange), y_val, Random.Range(-zrange, zrange));  
+    }
+
+    //checks if the generated position doesnt have a tree
+    private bool EmptySpace(Vector3 location)
+    {
+        Collider[] collider = Physics.OverlapSphere(location, 1);
 
         if (collider.Length == 0)
         {
-            Debug.Log("space found");
             return true;
         } else 
         {
-            return checkArray(collider, "Environment");
+            //return false;
+            return !CheckArray(collider, "Environment");
         }
     }
 
-    private bool checkArray(Collider[] colliders, string tag)
+    //checks if the provided array contains the provided tag
+    private bool CheckArray(Collider[] colliders, string tag)
     {
         bool hasTag = false;
         for (int i = 0; i < colliders.Length; i++)
         {
-            if(colliders[i].tag == tag)
+
+            if(colliders[i].CompareTag(tag))
             {
+                Debug.Log("collider has environment tag");
                 hasTag = true;
                 break;
             }
         }
         return hasTag;
-    }
-
-    private void objectSpawn(GameObject litter, Vector3 location)
-    {
-        Debug.Log("spawning");
-        Instantiate(litter, location, transform.rotation, transform);
-    }
-
-    private Vector3 genLocation()
-    {
-        Debug.Log("getting location");
-        float xrange = 14.5f;
-        float zrange = 14.5f;
-        float y_val = 1f;
-
-        float x_val = Random.Range(-xrange, xrange);
-        float z_val = Random.Range(-zrange, zrange);
-
-        Vector3 spawnPOS = new Vector3(x_val, y_val, z_val);
-
-        if (emptySpace(spawnPOS)) {
-            return spawnPOS;
-        } else
-        {
-            return genLocation();
-        }
-    }
-    public void Spawn()
-    {
-        Vector3 location = genLocation();
-
-        objectSpawn(ObjectToSpawn, location);
-        
-    }
+    } 
 }
