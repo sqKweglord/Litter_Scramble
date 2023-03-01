@@ -21,15 +21,15 @@ public class LitterController : MonoBehaviour
         if (collision.tag == "Player")
         {
             Destroy(gameObject);
-            Debug.Log("A player found me!");
+            //Debug.Log("A player found me!");
             scoreManager.score += 1f;
             scoreManager.sendScore();
             
-        } else
-        {
+        } //else
+        //{
             //a debug message to test collisons with other object types
-            Debug.Log("I hit a " + collision.tag);
-        }
+            //Debug.Log("I hit a " + collision.tag);
+        //}
 
         
     }
