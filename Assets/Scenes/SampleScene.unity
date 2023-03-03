@@ -1612,12 +1612,12 @@ GameObject:
   - component: {fileID: 1325174699}
   - component: {fileID: 1325174698}
   m_Layer: 0
-  m_Name: 
+  m_Name: ReplayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1325174697
 RectTransform:
   m_ObjectHideFlags: 0
