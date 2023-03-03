@@ -18,18 +18,19 @@ public class LitterController : MonoBehaviour
     {
         //defines what to do when a player collides with the litter
         //another else-if can be added for collisons with other game entities
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
-            Debug.Log("A player found me!");
+            //Debug.Log("A player found me!");
             scoreManager.score += 1f;
             scoreManager.sendScore();
             
-        } else
+        } else if (collision.CompareTag("Animal"))
         {
-            //a debug message to test collisons with other object types
-            Debug.Log("I hit a " + collision.tag);
+            Debug.Log("an animal got me!");
+            Destroy(gameObject);
         }
+        
 
         
     }
