@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class levelTimer : MonoBehaviour
 {
+    public GameObject gameOverScreen;
+
     [Header("Component")]
     public TextMeshProUGUI timerText;
 
@@ -30,6 +33,7 @@ public class levelTimer : MonoBehaviour
         {
             currentTime = timerLimit;
             SetTimerText();
+            gameOver();
             enabled = false;
         }
 
@@ -42,5 +46,17 @@ public class levelTimer : MonoBehaviour
         int seconds = (int)(currentTime % 60);
         timerText.text = "Time Remaining " + string.Format("{0:0}:{1:00}", minutes, seconds);
 
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+
+    public void gameOver()
+    {
+        gameOverScreen.SetActive(true);
+        Time.timeScale = 0;
     }
  }
