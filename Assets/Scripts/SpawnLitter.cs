@@ -1,8 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpawnLitter : MonoBehaviour
 {
     public GameObject ObjectToSpawn;
+
+    public int NumofSpawns;
+    public GameObject[] litterArr;
 
     private levelTimer timer;
 
@@ -10,12 +14,7 @@ public class SpawnLitter : MonoBehaviour
 
     private SpriteRenderer render;
 
-    //used for spawning a dynamic number of litter every 5 seconds
-    private int spawnedCount = 0;
-    private int spawnedMax = 5;
-
-
-    // sets the timer variable
+    // sets the timer variable, litter sprites, and initial litter spawns
     void Start()
     {
         //sets the array of sprites for the level
@@ -26,29 +25,38 @@ public class SpawnLitter : MonoBehaviour
 
         //gets the timer
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
+
+        //initialize litterArr size
+        litterArr = new GameObject[NumofSpawns];
+
+        //sets initial litter
+        for (int i = 0; i < NumofSpawns; i++)
+        {
+            litterArr[i] = Spawn();
+        }
+
     }
 
     void Update()
     {
-        if ((timer.currentTime != 0) && (Mathf.Ceil(timer.currentTime) % 5 == 0))
+        if (timer.currentTime != 0)
         {
-            if (spawnedCount < spawnedMax)
+            if (checkNull(litterArr))
             {
-                Spawn();
-                spawnedCount++; 
-            } 
-        } else
-        {
-            if (spawnedCount != 0)
-            {
-                spawnedCount = 0;
-                spawnedMax = Random.Range(2, 4);
+                bubbleSort(litterArr);
+                for (int i = 0; i < litterArr.Length; i++)
+                {
+                    if (litterArr[i] == null)
+                    {
+                        litterArr[i] = Spawn();
+                    }
+                }
             }
         }
     }
 
     //generates the spawn location and spawns the object there
-    public void Spawn()
+    public GameObject Spawn()
     {
         Vector3 location;
         do
@@ -56,17 +64,17 @@ public class SpawnLitter : MonoBehaviour
             location = GenLocation();
         } while (!EmptySpace(location));
 
-        ObjectSpawn(ObjectToSpawn, location);
+        return ObjectSpawn(ObjectToSpawn, location);
 
     }
 
     //spawns the provided object at a provided location
-    private void ObjectSpawn(GameObject litter, Vector3 location)
+    private GameObject ObjectSpawn(GameObject litter, Vector3 location)
     {
         //chnages the sprite to a random sprite
         render.sprite = spriteArray[Random.Range(0, spriteArray.Length)];
         //instantiates the litter
-        Instantiate(litter, location, transform.rotation, transform);
+        return Instantiate(litter, location, transform.rotation, transform);
     }
 
     //returns a vector of the spawn location
@@ -90,24 +98,53 @@ public class SpawnLitter : MonoBehaviour
         } else 
         {
             //return false;
-            return !CheckArray(collider, "Environment");
+            return !CheckForTag(collider, "Environment");
         }
     }
 
     //checks if the provided array contains the provided tag
-    private bool CheckArray(Collider[] colliders, string tag)
+    private bool CheckForTag(Collider[] colliders, string tag)
     {
         bool hasTag = false;
         for (int i = 0; i < colliders.Length; i++)
         {
-
             if(colliders[i].CompareTag(tag))
             {
-                Debug.Log("collider has environment tag");
                 hasTag = true;
                 break;
             }
         }
         return hasTag;
     } 
+
+    //methods for array
+
+    //checks if array contains null
+    private bool checkNull(GameObject[] arr)
+    {
+        bool hasNull = false;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == null)
+                {
+                    hasNull = true;
+                    break;
+                }
+        }
+        return hasNull;
+    }
+
+    static void bubbleSort(GameObject[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n - 1; i++)
+            for (int j = 0; j < n - i - 1; j++)
+                if (arr[j] == null)
+                {
+                    // swap temp and arr[i]
+                    GameObject temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+    }
 }
