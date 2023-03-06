@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     private void WriteScore()
     {
         textScore.text = "Score: " + score.ToString();
-        Debug.Log("Score updated");
+        //Debug.Log("Score updated");
     }
 
     //a public wrapper method that can be called in other classes

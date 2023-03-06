@@ -1287,6 +1287,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSpawn: {fileID: 7589499146982951149, guid: bc7138daca5ab404cbe89a30fad8fe4a,
     type: 3}
+  NumofSpawns: 7
+  litterArr:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
