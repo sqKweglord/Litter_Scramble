@@ -45,6 +45,8 @@ public class AnimalMovement : MonoBehaviour
         minWalkPoint = Walkarea.bounds.min;
         maxWalkPoint = Walkarea.bounds.max;
 
+        SpawnLitter litter = GameObject.Find("LitterParent").GetComponent<SpawnLitter>();
+         waypoints = litter.litterArr; 
         ChooseDirection(); // intial call to direction function
     }
 
@@ -137,5 +139,7 @@ public class AnimalMovement : MonoBehaviour
             }
         }
         walkDir = walkDirection;
+        
+        
     }
 }
