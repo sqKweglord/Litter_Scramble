@@ -27,7 +27,7 @@ public class LitterController : MonoBehaviour
             
         } else if (collision.CompareTag("Animal"))
         {
-            Debug.Log("an animal got me!");
+            //Debug.Log("an animal got me!");
             Destroy(gameObject);
         }
         
