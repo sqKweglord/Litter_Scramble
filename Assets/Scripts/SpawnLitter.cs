@@ -3,7 +3,11 @@ using UnityEngine;
 public class SpawnLitter : MonoBehaviour
 {
     public GameObject ObjectToSpawn;
+    public int LevelNum = 1;
+
     levelTimer timer;
+
+    Material[] materials;
 
     //used for spawning a dynamic number of litter every 5 seconds
     private int spawnedCount = 0;
@@ -13,6 +17,15 @@ public class SpawnLitter : MonoBehaviour
     // sets the timer variable
     void Start()
     {
+        //sets the array of sprites for the level
+        if (LevelNum == 1)
+        {
+            materials = (Material[]) Resources.LoadAll("LevelOne", typeof(Material));
+        } else if (LevelNum == 2) {
+            materials = (Material[]) Resources.LoadAll("LevelTwo", typeof(Material));
+        }
+
+        //gets the timer
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
     }
 
@@ -51,6 +64,9 @@ public class SpawnLitter : MonoBehaviour
     //spawns the provided object at a provided location
     private void ObjectSpawn(GameObject litter, Vector3 location)
     {
+        //chnages the material to a random sprite
+        litter.GetComponent<Renderer>().material = (Material) materials[Random.Range(0, materials.Length)];
+        //instantiates the litter
         Instantiate(litter, location, transform.rotation, transform);
     }
 
