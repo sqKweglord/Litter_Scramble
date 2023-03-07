@@ -217,7 +217,7 @@
             "id": "4a76ade6-b263-47df-8ceb-eae1f3b553df",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Submit",
                     "type": "Button",
                     "id": "900c8ffc-95a4-4644-ab33-121317900cde",
                     "expectedControlType": "Button",
@@ -226,7 +226,19 @@
                     "initialStateCheck": false
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "824c0bcf-02f8-4b66-b546-7237bdc75d6f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
