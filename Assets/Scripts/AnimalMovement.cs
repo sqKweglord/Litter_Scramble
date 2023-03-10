@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class AnimalMovement : MonoBehaviour
-{
+{   
+    public int walkDir = 0;
+    // RANDOM DIRECTIONAL MOVEMENT
     // invoke box collider object to contain sprite movement to map
     public Collider Walkarea;
     private bool atEdge;
@@ -22,6 +24,12 @@ public class AnimalMovement : MonoBehaviour
     //defines Object spawnpoint
     public float startX;
     public float startZ;
+    //WAYPOING BASED MOVEMENT
+    public GameObject[] waypoints;
+    public GameObject player;
+    public bool isWaypoint;
+    int current = 0;
+    float WPradius = 1;
 
 
     // Start is called before the first frame update
@@ -37,6 +45,8 @@ public class AnimalMovement : MonoBehaviour
         minWalkPoint = Walkarea.bounds.min;
         maxWalkPoint = Walkarea.bounds.max;
 
+        SpawnLitter litter = GameObject.Find("LitterParent").GetComponent<SpawnLitter>();
+         waypoints = litter.litterArr; 
         ChooseDirection(); // intial call to direction function
     }
 
@@ -46,8 +56,7 @@ public class AnimalMovement : MonoBehaviour
         if (isWalking)
         {
             walkCounter -= Time.deltaTime;
-            //
-            switch (walkDirection)//direction check and edge handle
+            switch (walkDirection)//direction check and edge handle, case 5 and 4 repeat to widen range for waypoing selection
             {
                 case 0:
                     MyRigidbody.velocity = new Vector3(0, 0, moveSpeed + speedMod);
@@ -77,6 +86,17 @@ public class AnimalMovement : MonoBehaviour
                         transform.position = new Vector3(startX, transform.position.y, startZ);
                     }
                     break;
+                default:
+                    if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
+                    {
+                        current = Random.Range(0, waypoints.Length);
+                        if (current >= waypoints.Length)
+                        {
+                            current = 0;
+                        }
+                    }
+                    transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * moveSpeed);
+                    break;
             }
 
             if (walkCounter < 0)//begins walk sequence again
@@ -104,7 +124,7 @@ public class AnimalMovement : MonoBehaviour
     {
         //RNG generation
         lastDirection = walkDirection;
-        walkDirection = Random.Range(0, 3);//randomizes walk direction
+        walkDirection = Random.Range(0, 5);//randomizes walk direction
         speedMod = Random.Range(0, 2); //randomizes walk distance
         isWalking = true;
         walkCounter = walkTime;
@@ -118,5 +138,8 @@ public class AnimalMovement : MonoBehaviour
                 walkDirection++;
             }
         }
+        walkDir = walkDirection;
+        
+        
     }
 }
