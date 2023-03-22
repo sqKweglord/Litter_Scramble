@@ -74,8 +74,8 @@ public class SpawnLitter : MonoBehaviour
     //returns a vector of the spawn location
     private Vector3 GenLocation()
     {
-        float xrange = 14.5f;
-        float zrange = 14.5f;
+        float xrange = 14f;
+        float zrange = 14f;
         float y_val = 1f;
 
         return new Vector3(Random.Range(-xrange, xrange), y_val, Random.Range(-zrange, zrange));  
