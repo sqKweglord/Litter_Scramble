@@ -3,25 +3,19 @@ using UnityEngine;
 
 public class SpawnLitter : MonoBehaviour
 {
-    public GameObject ObjectToSpawn;
+    public GameObject[] ObjectsToSpawn;
 
     public int NumofSpawns;
     public GameObject[] litterArr;
 
     private levelTimer timer;
 
-    private Sprite[] spriteArray;
-
-    private SpriteRenderer render;
 
     // sets the timer variable, litter sprites, and initial litter spawns
     void Start()
     {
-        //sets the array of sprites for the level
-        spriteArray = Resources.LoadAll<Sprite>("recycle_items");
 
-        //gets the sprite renderer of the prefab
-        render = ObjectToSpawn.GetComponent<SpriteRenderer>();
+        ObjectsToSpawn = Resources.LoadAll<GameObject>("litter_prefabs");
 
         //gets the timer
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
@@ -64,15 +58,15 @@ public class SpawnLitter : MonoBehaviour
             location = GenLocation();
         } while (!EmptySpace(location));
 
-        return ObjectSpawn(ObjectToSpawn, location);
+        int i = Random.Range(0, ObjectsToSpawn.Length);
+
+        return ObjectSpawn(ObjectsToSpawn[i], location);
 
     }
 
     //spawns the provided object at a provided location
     private GameObject ObjectSpawn(GameObject litter, Vector3 location)
     {
-        //chnages the sprite to a random sprite
-        render.sprite = spriteArray[Random.Range(0, spriteArray.Length)];
         //instantiates the litter
         return Instantiate(litter, location, transform.rotation, transform);
     }
