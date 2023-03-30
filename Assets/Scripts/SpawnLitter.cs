@@ -10,6 +10,9 @@ public class SpawnLitter : MonoBehaviour
 
     private levelTimer timer;
 
+    public float zSpawnRange;
+    public float xSpawnRange;
+
 
     // sets the timer variable, litter sprites, and initial litter spawns
     void Start()
@@ -74,11 +77,9 @@ public class SpawnLitter : MonoBehaviour
     //returns a vector of the spawn location
     private Vector3 GenLocation()
     {
-        float xrange = 14f;
-        float zrange = 14f;
         float y_val = 1f;
 
-        return new Vector3(Random.Range(-xrange, xrange), y_val, Random.Range(-zrange, zrange));  
+        return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), y_val, Random.Range(-zSpawnRange, zSpawnRange));  
     }
 
     //checks if the generated position doesnt have a tree
