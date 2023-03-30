@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    //these values are to restrict the player inside the set x and z coordinates
-    public float xRange;
-    public float zRange;
+    //the box collider that defines the map edge
+    public Collider Walkarea;
+
+    // define box collider value
+    private Vector3 minWalkPoint;
+    private Vector3 maxWalkPoint;
+
 
     //used for smooth movement
     public float MoveSmoothTime;
@@ -46,6 +50,8 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         Controller = GetComponent<CharacterController>();
+        minWalkPoint = Walkarea.bounds.min;
+        maxWalkPoint = Walkarea.bounds.max;
     }
 
     // Update is called once per frame
@@ -91,21 +97,21 @@ public class playerMovement : MonoBehaviour
 
 
         //keeps player within allowed game space
-        if (transform.position.x > xRange)
+        if (transform.position.x > maxWalkPoint.x)
         {
-            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
-        } else if (transform.position.x < -xRange)
+            transform.position = new Vector3(maxWalkPoint.x, transform.position.y, transform.position.z);
+        } else if (transform.position.x < minWalkPoint.x)
         {
-            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+            transform.position = new Vector3(minWalkPoint.x, transform.position.y, transform.position.z);
         }
 
-        if (transform.position.z > zRange)
+        if (transform.position.z > maxWalkPoint.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxWalkPoint.z);
         }
-        else if (transform.position.z < -zRange)
+        else if (transform.position.z < minWalkPoint.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
+            transform.position = new Vector3(transform.position.x, transform.position.y, minWalkPoint.z);
         }
         
 
