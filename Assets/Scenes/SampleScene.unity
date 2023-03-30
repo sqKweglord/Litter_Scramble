@@ -172,8 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0134ac216b5354387557d60ff39b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRange: 14.5
-  zRange: 14.5
+  Walkarea: {fileID: 1453561671}
   MoveSmoothTime: 0.1
   MoveSpeed: 6
 --- !u!143 &148064476
@@ -1361,6 +1360,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  zSpawnRange: 0
+  xSpawnRange: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
