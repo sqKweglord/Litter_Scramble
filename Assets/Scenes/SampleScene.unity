@@ -1360,8 +1360,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  zSpawnRange: 0
-  xSpawnRange: 0
+  zSpawnRange: 14
+  xSpawnRange: 14
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
