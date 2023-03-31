@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class inactivityTimer : MonoBehaviour
 {
+    //Editable settings for the timer
     [Header("Component")]
     public TextMeshProUGUI timerText;
 
@@ -16,14 +17,13 @@ public class inactivityTimer : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
+    // Detects player input into game. Counts up when no input is given. Resets to 0 when input is given.
     void Update()
     {
-
-
         if (!Input.anyKey)
         {
             currentTime = currentTime += Time.deltaTime;
@@ -34,12 +34,12 @@ public class inactivityTimer : MonoBehaviour
             }
             SetTimerText();
         }
+
         else currentTime = 0f;
-
-
         SetTimerText();
     }
 
+    //For testing the timer
         private void SetTimerText()
     {
         int minutes = (int)(currentTime / 60) % 60;
@@ -48,6 +48,7 @@ public class inactivityTimer : MonoBehaviour
 
     }
 
+    //To send the game back to menu if inactivity timer pops.
         public void changeScene()
     {
         SceneManager.LoadScene("StartMenu", LoadSceneMode.Single);
