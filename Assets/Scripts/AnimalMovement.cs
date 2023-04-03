@@ -95,7 +95,8 @@ public class AnimalMovement : MonoBehaviour
                             current = 0;
                         }
                     }
-                    transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * moveSpeed);
+                    Vector3 newPosition = new Vector3(waypoints[current].transform.position.x, transform.position.y, waypoints[current].transform.position.z);
+                    transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * moveSpeed);
                     break;
             }
 
