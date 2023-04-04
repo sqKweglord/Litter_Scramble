@@ -29,6 +29,11 @@ public class LitterController : MonoBehaviour
         {
             //Debug.Log("an animal got me!");
             Destroy(gameObject);
+            if (scoreManager.score > 0)
+            {
+                scoreManager.score -= 1f;
+                scoreManager.sendScore();
+            }
         }
         
 
