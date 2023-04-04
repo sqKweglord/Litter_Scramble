@@ -12,12 +12,12 @@ public class playerMovement : MonoBehaviour
     private Vector3 minWalkPoint;
     private Vector3 maxWalkPoint;
 
-
     //used for smooth movement
     public float MoveSmoothTime;
 
     //how fast the player should move
     public float MoveSpeed;
+    public Vector3 direction;
 
     //character controller
     private CharacterController Controller;
@@ -73,8 +73,8 @@ public class playerMovement : MonoBehaviour
             y = 0f,
             z = moveVal.y
         };
-        
-
+        xval = PlayerInput.x;
+        yval = PlayerInput.z;
         if (PlayerInput.magnitude > 1f)
         {
             PlayerInput.Normalize();
@@ -82,7 +82,7 @@ public class playerMovement : MonoBehaviour
 
         //transforms the players input so that it stays relative to the camera
         Vector3 MoveVector = transform.TransformDirection(PlayerInput);
-
+        direction = MoveVector;
         //defines the vector the player will move in
         CurrentMoveVelocity = Vector3.SmoothDamp(
             CurrentMoveVelocity,
