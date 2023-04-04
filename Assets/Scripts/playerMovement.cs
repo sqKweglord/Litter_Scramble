@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-    //the box collider that defines the map edge
-    public Collider Walkarea;
-
-    // define box collider value
-    private Vector3 minWalkPoint;
-    private Vector3 maxWalkPoint;
-
+    //these values are to restrict the player inside the set x and z coordinates
+    public float xRange;
+    public float zRange;
+    public float xval;
+    public float yval;
 
     //used for smooth movement
     public float MoveSmoothTime;
 
     //how fast the player should move
     public float MoveSpeed;
+    public Vector3 direction;
 
     //character controller
     private CharacterController Controller;
@@ -50,8 +49,6 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         Controller = GetComponent<CharacterController>();
-        minWalkPoint = Walkarea.bounds.min;
-        maxWalkPoint = Walkarea.bounds.max;
     }
 
     // Update is called once per frame
@@ -73,8 +70,8 @@ public class playerMovement : MonoBehaviour
             y = 0f,
             z = moveVal.y
         };
-        
-
+        xval = PlayerInput.x;
+        yval = PlayerInput.z;
         if (PlayerInput.magnitude > 1f)
         {
             PlayerInput.Normalize();
@@ -82,7 +79,7 @@ public class playerMovement : MonoBehaviour
 
         //transforms the players input so that it stays relative to the camera
         Vector3 MoveVector = transform.TransformDirection(PlayerInput);
-
+        direction = MoveVector;
         //defines the vector the player will move in
         CurrentMoveVelocity = Vector3.SmoothDamp(
             CurrentMoveVelocity,
@@ -97,21 +94,21 @@ public class playerMovement : MonoBehaviour
 
 
         //keeps player within allowed game space
-        if (transform.position.x > maxWalkPoint.x)
+        if (transform.position.x > xRange)
         {
-            transform.position = new Vector3(maxWalkPoint.x, transform.position.y, transform.position.z);
-        } else if (transform.position.x < minWalkPoint.x)
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        } else if (transform.position.x < -xRange)
         {
-            transform.position = new Vector3(minWalkPoint.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
         }
 
-        if (transform.position.z > maxWalkPoint.z)
+        if (transform.position.z > zRange)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, maxWalkPoint.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         }
-        else if (transform.position.z < minWalkPoint.z)
+        else if (transform.position.z < -zRange)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, minWalkPoint.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
         }
         
 

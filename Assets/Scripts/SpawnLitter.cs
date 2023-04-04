@@ -3,22 +3,25 @@ using UnityEngine;
 
 public class SpawnLitter : MonoBehaviour
 {
-    public GameObject[] ObjectsToSpawn;
+    public GameObject ObjectToSpawn;
 
     public int NumofSpawns;
     public GameObject[] litterArr;
 
     private levelTimer timer;
 
-    public float zSpawnRange;
-    public float xSpawnRange;
+    private Sprite[] spriteArray;
 
+    private SpriteRenderer render;
 
     // sets the timer variable, litter sprites, and initial litter spawns
     void Start()
     {
+        //sets the array of sprites for the level
+        spriteArray = Resources.LoadAll<Sprite>("recycle_items");
 
-        ObjectsToSpawn = Resources.LoadAll<GameObject>("litter_prefabs");
+        //gets the sprite renderer of the prefab
+        render = ObjectToSpawn.GetComponent<SpriteRenderer>();
 
         //gets the timer
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
@@ -61,15 +64,15 @@ public class SpawnLitter : MonoBehaviour
             location = GenLocation();
         } while (!EmptySpace(location));
 
-        int i = Random.Range(0, ObjectsToSpawn.Length);
-
-        return ObjectSpawn(ObjectsToSpawn[i], location);
+        return ObjectSpawn(ObjectToSpawn, location);
 
     }
 
     //spawns the provided object at a provided location
     private GameObject ObjectSpawn(GameObject litter, Vector3 location)
     {
+        //chnages the sprite to a random sprite
+        render.sprite = spriteArray[Random.Range(0, spriteArray.Length)];
         //instantiates the litter
         return Instantiate(litter, location, transform.rotation, transform);
     }
@@ -77,9 +80,11 @@ public class SpawnLitter : MonoBehaviour
     //returns a vector of the spawn location
     private Vector3 GenLocation()
     {
+        float xrange = 14.5f;
+        float zrange = 14.5f;
         float y_val = 1f;
 
-        return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), y_val, Random.Range(-zSpawnRange, zSpawnRange));  
+        return new Vector3(Random.Range(-xrange, xrange), y_val, Random.Range(-zrange, zrange));  
     }
 
     //checks if the generated position doesnt have a tree
