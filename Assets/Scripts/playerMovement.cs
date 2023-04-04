@@ -8,12 +8,15 @@ public class playerMovement : MonoBehaviour
     //these values are to restrict the player inside the set x and z coordinates
     public float xRange;
     public float zRange;
+    public float xval;
+    public float yval;
 
     //used for smooth movement
     public float MoveSmoothTime;
 
     //how fast the player should move
     public float MoveSpeed;
+    public Vector3 direction;
 
     //character controller
     private CharacterController Controller;
@@ -67,8 +70,8 @@ public class playerMovement : MonoBehaviour
             y = 0f,
             z = moveVal.y
         };
-        
-
+        xval = PlayerInput.x;
+        yval = PlayerInput.z;
         if (PlayerInput.magnitude > 1f)
         {
             PlayerInput.Normalize();
@@ -76,7 +79,7 @@ public class playerMovement : MonoBehaviour
 
         //transforms the players input so that it stays relative to the camera
         Vector3 MoveVector = transform.TransformDirection(PlayerInput);
-
+        direction = MoveVector;
         //defines the vector the player will move in
         CurrentMoveVelocity = Vector3.SmoothDamp(
             CurrentMoveVelocity,
