@@ -35,6 +35,7 @@ public class playerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveVal = value.Get<Vector2>();
+        GameManager.Instance.anyInput = true;
     }
     //logic to get inputs that rotate the character
     bool rtLeft;
@@ -60,6 +61,8 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //GameManager.Instance.anyInput = false;
+
         if (rtRight)
         {
             transform.Rotate(Vector3.up, 50 * Time.deltaTime);
@@ -119,7 +122,13 @@ public class playerMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, minWalkPoint.z);
         }
-        
 
+        if ((rtLeft) || (rtRight) || (moveVal.y != 0 || moveVal.x != 0))
+        {
+            GameManager.Instance.anyInput = true;
+        } else
+        {
+            GameManager.Instance.anyInput = false;
+        }
     }
 }

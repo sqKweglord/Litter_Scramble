@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class inactivityTimer : MonoBehaviour
 {
@@ -15,17 +16,11 @@ public class inactivityTimer : MonoBehaviour
     public float currentTime = 0f;
     public float inactivityTime = 60f;
 
-    void Start()
-    {
-
-    }
-
-
     // Detects player input into game. Counts up when no input is given. Resets to 0 when input is given.
     void Update()
     {
-        if (!Input.anyKey)
-        {
+        //Debug.Log(GameManager.Instance.anyInput);
+        if (!GameManager.Instance.anyInput) {
             currentTime = currentTime += Time.deltaTime;
             if (currentTime > inactivityTime)
             {
@@ -33,9 +28,9 @@ public class inactivityTimer : MonoBehaviour
                 currentTime = 0;
             }
             SetTimerText();
-        }
-
-        else currentTime = 0f;
+        } else {
+            currentTime = 0f;
+                }
         SetTimerText();
     }
 
