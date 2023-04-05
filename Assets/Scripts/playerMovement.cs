@@ -78,7 +78,7 @@ public class playerMovement : MonoBehaviour
         };
 
         xval = PlayerInput.x;
-        yval = PlayerInput.y;
+        yval = PlayerInput.z;
         
 
         if (PlayerInput.magnitude > 1f)
