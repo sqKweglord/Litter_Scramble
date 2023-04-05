@@ -175,13 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0134ac216b5354387557d60ff39b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRange: 14.5
-  zRange: 14.5
+  Walkarea: {fileID: 0}
   xval: 0
   yval: 0
   MoveSmoothTime: 0.1
   MoveSpeed: 6
-  direction: {x: 0, y: 0, z: 0}
 --- !u!143 &148064476
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1458,7 +1456,7 @@ GameObject:
   - component: {fileID: 720774513}
   - component: {fileID: 720774514}
   m_Layer: 0
-  m_Name: lv1Music
+  m_Name: lv1BMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1489,11 +1487,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8e7b8bafdab608f4b8f2811343fbdea1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
