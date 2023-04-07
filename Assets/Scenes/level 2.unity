@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 32
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1b3d6d2f34b32e14e8c7598bd1ebb7fd,
+    type: 2}
   m_LightingSettings: {fileID: 354836978}
 --- !u!196 &4
 NavMeshSettings:
@@ -262,18 +263,18 @@ LightingSettings:
   m_BounceScale: 1
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
-  m_UsingShadowmask: 1
+  m_UsingShadowmask: 0
   m_BakeBackend: 1
-  m_LightmapMaxSize: 1024
+  m_LightmapMaxSize: 128
   m_BakeResolution: 40
   m_Padding: 2
-  m_LightmapCompression: 3
+  m_LightmapCompression: 1
   m_AO: 0
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
   m_CompAOExponentDirect: 0
   m_ExtractAO: 0
-  m_MixedBakeMode: 2
+  m_MixedBakeMode: 0
   m_LightmapsBakeMode: 1
   m_FilterMode: 1
   m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
@@ -292,8 +293,8 @@ LightingSettings:
   m_PVREnvironmentSampleCount: 256
   m_PVREnvironmentReferencePointCount: 2048
   m_LightProbeSampleCountMultiplier: 4
-  m_PVRBounces: 2
-  m_PVRMinBounces: 1
+  m_PVRBounces: 10
+  m_PVRMinBounces: 5
   m_PVREnvironmentMIS: 1
   m_PVRFilteringMode: 1
   m_PVRDenoiserTypeDirect: 1
@@ -453,7 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592159005}
   m_Layer: 0
-  m_Name: Environmental Obstacles
+  m_Name: Environmental Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,6 +828,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 41051921}
     m_Modifications:
+    - target: {fileID: 202938320184855832, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.6935227
+      objectReference: {fileID: 0}
+    - target: {fileID: 202938320184855832, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.1945195
+      objectReference: {fileID: 0}
+    - target: {fileID: 202938320184855832, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.010828556
+      objectReference: {fileID: 0}
+    - target: {fileID: 202938320184855832, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.7685205
+      objectReference: {fileID: 0}
+    - target: {fileID: 202938320184855832, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.03157346
+      objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_RootOrder
@@ -840,37 +866,37 @@ PrefabInstance:
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.09
+      value: 8.848
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28
+      value: -0.068
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.53
+      value: -10.611
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9054398
+      value: 0.98523176
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.06733532
+      value: 0.0022804125
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1568793
+      value: -0.1707043
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.38863045
+      value: -0.013161616
       objectReference: {fileID: 0}
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
@@ -885,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 6238431494908036600, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 46.46
+      value: -1.531
       objectReference: {fileID: 0}
     - target: {fileID: 6762309634392465218, guid: 4d905b5f2664cf64b9a4c072f1b286f6,
         type: 3}
@@ -1110,10 +1136,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.451
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -1143,13 +1169,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.84e-43, y: 2.1820466e-19, z: 9.82e-43, w: 3.4069375e+12}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
