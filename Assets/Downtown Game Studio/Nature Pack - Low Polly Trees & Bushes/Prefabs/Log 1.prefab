@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6238431494908036600}
   - component: {fileID: 7006624589968394845}
   - component: {fileID: 5104954117319933591}
-  - component: {fileID: 5843953887683748397}
-  - component: {fileID: 5407739868010237151}
+  - component: {fileID: 202938320184855832}
   m_Layer: 0
   m_Name: Log 1
   m_TagString: Environment
@@ -85,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5843953887683748397
+--- !u!65 &202938320184855832
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,19 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0103423875, y: 0.042750604, z: 0.012753433}
-  m_Center: {x: -0.0006812925, y: 0.00006158555, z: 0.0048118997}
---- !u!136 &5407739868010237151
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6762309634392465218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.54796207
-  m_Height: 2.3323812
-  m_Direction: 2
-  m_Center: {x: -0.016267478, y: 0.11433779, z: 0.014542103}
+  m_Size: {x: 0.6069058, y: 1.6935228, z: 2.1375306}
+  m_Center: {x: 0.010828555, y: 0.7685204, z: -0.0030792952}

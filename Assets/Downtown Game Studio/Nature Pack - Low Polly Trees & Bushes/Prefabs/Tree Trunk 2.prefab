@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8214151492521889656}
   - component: {fileID: 5066933131388125405}
   - component: {fileID: 7040722295058134039}
-  - component: {fileID: 8535515631624022157}
   - component: {fileID: 1413855740673596950}
   m_Layer: 0
   m_Name: Tree Trunk 2
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8535515631624022157
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8842070129730868674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.013761809, y: 0.018140927, z: 0.026401918}
-  m_Center: {x: -0.00071727345, y: 0.0018541344, z: 0.012528851}
 --- !u!136 &1413855740673596950
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -109,6 +95,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.36770308
-  m_Height: 1.8526487
+  m_Height: 3.252955
   m_Direction: 1
-  m_Center: {x: 0.0052242875, y: 0.473634, z: 0.0075730085}
+  m_Center: {x: 0.0052242875, y: 1.1737871, z: 0.0075730085}
