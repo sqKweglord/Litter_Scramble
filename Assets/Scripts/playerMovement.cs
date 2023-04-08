@@ -119,7 +119,16 @@ public class playerMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, minWalkPoint.z);
         }
-        
+
+        if ((rtLeft) || (rtRight) || (moveVal.y != 0 || moveVal.x != 0))
+        {
+            GameManager.Instance.anyInput = true;
+        }
+        else
+        {
+            GameManager.Instance.anyInput = false;
+        }
+
 
     }
 }
