@@ -29,7 +29,7 @@ public class AnimalMovement : MonoBehaviour
     public GameObject[] waypoints;
     public GameObject player;
     public bool isWaypoint;
-    int current = 0;
+    public int current = 0;
     float WPradius = 1;
 
 
@@ -54,6 +54,7 @@ public class AnimalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(current);
         if (isWalking)
         {
             walkCounter -= Time.deltaTime;
