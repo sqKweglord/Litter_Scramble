@@ -10,9 +10,8 @@ public class SpawnLitter : MonoBehaviour
 
     private levelTimer timer;
 
-    public float zSpawnRange;
-    public float xSpawnRange;
-
+    private Transform[] SpawnPoints;
+    public GameObject spawns;
 
     // sets the timer variable, litter sprites, and initial litter spawns
     void Start()
@@ -23,6 +22,14 @@ public class SpawnLitter : MonoBehaviour
         //gets the timer
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
 
+        //sets the SpawnPoints
+        int count = spawns.transform.childCount;
+        SpawnPoints = new Transform[count];
+        for (int i = 0; i < count; i++)
+        {
+            SpawnPoints[i] = spawns.transform.GetChild(i);
+        }
+
         //initialize litterArr size
         litterArr = new GameObject[NumofSpawns];
 
@@ -30,6 +37,7 @@ public class SpawnLitter : MonoBehaviour
         for (int i = 0; i < NumofSpawns; i++)
         {
             litterArr[i] = Spawn();
+            litterArr[i].AddComponent<LitterController>();
         }
 
     }
@@ -46,27 +54,28 @@ public class SpawnLitter : MonoBehaviour
                     if (litterArr[i] == null)
                     {
                         litterArr[i] = Spawn();
+                        litterArr[i].AddComponent<LitterController>();
                     }
                 }
             }
         }
     }
 
-    //generates the spawn location and spawns the object there
     public GameObject Spawn()
     {
+        int spawnPoint;
         Vector3 location;
-        do
-        {
-            location = GenLocation();
-        } while (!EmptySpace(location));
-
-        int i = Random.Range(0, ObjectsToSpawn.Length);
-
-        return ObjectSpawn(ObjectsToSpawn[i], location);
+        do {
+            spawnPoint = Random.Range(0, SpawnPoints.Length);
+            location = new Vector3(SpawnPoints[spawnPoint].position.x, SpawnPoints[spawnPoint].position.y, SpawnPoints[spawnPoint].position.z);
+        } while (!checkSpawnPoint(location));
+       
+        checkSpawnPoint(location);
+        int litter = Random.Range(0, ObjectsToSpawn.Length);
+        return ObjectSpawn(ObjectsToSpawn[litter], location);
 
     }
-
+ 
     //spawns the provided object at a provided location
     private GameObject ObjectSpawn(GameObject litter, Vector3 location)
     {
@@ -74,45 +83,26 @@ public class SpawnLitter : MonoBehaviour
         return Instantiate(litter, location, transform.rotation, transform);
     }
 
-    //returns a vector of the spawn location
-    private Vector3 GenLocation()
+    private bool checkSpawnPoint(Vector3 point)
     {
-        float y_val = 1f;
-
-        return new Vector3(Random.Range(-xSpawnRange, xSpawnRange), y_val, Random.Range(-zSpawnRange, zSpawnRange));  
-    }
-
-    //checks if the generated position doesnt have a tree
-    private bool EmptySpace(Vector3 location)
-    {
-        Collider[] collider = Physics.OverlapSphere(location, 1);
-
-        if (collider.Length == 0)
+        Collider[] colliders = Physics.OverlapSphere(point, 1);
+        if (colliders.Length == 0)
         {
             return true;
-        } else 
+        } else
         {
-            //return false;
-            return !CheckForTag(collider, "Environment");
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].CompareTag("litter"))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 
-    //checks if the provided array contains the provided tag
-    private bool CheckForTag(Collider[] colliders, string tag)
-    {
-        bool hasTag = false;
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if(colliders[i].CompareTag(tag))
-            {
-                hasTag = true;
-                break;
-            }
-        }
-        return hasTag;
-    } 
-
-    //methods for array
 
     //checks if array contains null
     private bool checkNull(GameObject[] arr)
@@ -128,6 +118,7 @@ public class SpawnLitter : MonoBehaviour
         }
         return hasNull;
     }
+    
 
     static void bubbleSort(GameObject[] arr)
     {
