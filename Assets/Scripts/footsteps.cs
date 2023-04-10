@@ -5,6 +5,7 @@ using UnityEngine;
 public class footsteps : MonoBehaviour
 {
     public AudioSource footstep1;
+    
 
     //Enables the footstep sound
     //Needs to be reconfigured for controller
