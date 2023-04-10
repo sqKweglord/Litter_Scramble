@@ -697,6 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstep1: {fileID: 148064481}
+  player: {fileID: 148064466}
 --- !u!82 &148064481
 AudioSource:
   m_ObjectHideFlags: 0
