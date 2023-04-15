@@ -6,12 +6,12 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TMP_Text textScore;
-    public float score;
+    private int score;
 
     // initializes the text and score to 0
     void Start()
     {
-        score = 0f;
+        score = 0;
         textScore.text = "Score: " + score.ToString();  
     }
 
@@ -22,9 +22,27 @@ public class ScoreManager : MonoBehaviour
         //Debug.Log("Score updated");
     }
 
-    //a public wrapper method that can be called in other classes
-    public void sendScore()
+    //updates the score and write to the UI
+    public void add()
     {
+        score += 1;
         WriteScore();
+    }
+
+    public void sub()
+    {
+        if ((score != 0) && (score - 2 > 0))
+        {
+            score -= 2;
+            WriteScore();
+        } else
+        {
+            score = 0;
+        }
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 }

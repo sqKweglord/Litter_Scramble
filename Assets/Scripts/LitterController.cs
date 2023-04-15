@@ -22,15 +22,13 @@ public class LitterController : MonoBehaviour
         {
             Destroy(gameObject);
             //Debug.Log("A player found me!");
-            scoreManager.score += 1f;
-            scoreManager.sendScore();
+            scoreManager.add();
             
         } else if (collision.CompareTag("Animal"))
         {
             //Debug.Log("an animal got me!");
             Destroy(gameObject);
-            scoreManager.score -= 1f;
-            scoreManager.sendScore();
+            scoreManager.sub();
         }
         
 
