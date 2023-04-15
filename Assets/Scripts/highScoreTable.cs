@@ -27,7 +27,7 @@ public class highScoreTable : MonoBehaviour
           
         };
 
-        //Sort entry list by score
+        //Sorts the scores 
         for(int i = 0; i < highscoreEntryList.Count; i++){
             for(int j = i + 1; j < highscoreEntryList.Count; j++){
                 if(highscoreEntryList[j].score > highscoreEntryList[i].score){
@@ -106,8 +106,8 @@ public class highScoreTable : MonoBehaviour
         private class HighScores{
             public List<HighscoreEntry> highscoreEntryList;
         }
-        //Class that creates a single line entry for the score
-        [System.Serializable]
+        //Class that creates a single line entry for the scoreboard
+        
     private class HighscoreEntry{
         public int score;
         public string name;
