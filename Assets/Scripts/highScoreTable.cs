@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Text;
 
 public class highScoreTable : MonoBehaviour
 {
@@ -9,8 +11,13 @@ public class highScoreTable : MonoBehaviour
     private Transform entryTemplate;
     private List<HighscoreEntry> highscoreEntryList;
     private List<Transform> highscoreEntryTransformList;
+    private static string path;
 
-    private void Awake() {
+    private void Start() {
+        path = Application.persistentDataPath + "/scores.txt";
+        WriteString();
+        ReadString();
+
       entryContainer = transform.Find("highScoreEntryContainer");
       entryTemplate = entryContainer.Find("highScoreEntryTemp");
 
@@ -85,6 +92,38 @@ public class highScoreTable : MonoBehaviour
 
         transformList.Add(entryTransform);
         }
+
+    private static void WriteString()
+    {
+        clearFile();
+        int[] temp = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+        StringBuilder sb = new StringBuilder();
+        string s;
+        for (int i = 0; i < temp.Length; i++)
+        {
+            sb.Append(temp[i]).Append(",");
+        }
+        s = sb.ToString();
+
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(s);
+        writer.Close();
+    }
+
+    private static void ReadString()
+    {
+        StreamReader reader = new StreamReader(path);
+        string temp = reader.ReadToEnd();
+        reader.Close();
+        Debug.Log("content: " + temp);
+    }
+
+    private static void clearFile()
+    {
+        TextWriter tw = new StreamWriter(path, false);
+        tw.Write(string.Empty);
+        tw.Close();
+    }
 
     //The function below is to add a new score entry to the score board
 
