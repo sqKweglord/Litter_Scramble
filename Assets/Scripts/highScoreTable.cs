@@ -14,9 +14,14 @@ public class highScoreTable : MonoBehaviour
     private static string path;
 
     private void Start() {
+        //path to file
         path = Application.persistentDataPath + "/scores.txt";
-
+        
+        //gets the current players score
         int newScore = GameVariables.score;
+        //resets the current players score for when the game gets restart
+        GameVariables.score = 0;
+        //reads the old scores in from the file
         int[] scores = ReadScores();
         
 
