@@ -7,6 +7,7 @@ public class EndMenu : MonoBehaviour
     private ScoreManager score;
     void Start()
     {
+        //GameObject.Find("Intro").SetActive(false);
         timer = GameObject.Find("TimerManager").GetComponent<levelTimer>();
         score = GameObject.Find("Canvas").GetComponent<ScoreManager>();
     }
