@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -11,18 +7,18 @@ public class sceneTransition : MonoBehaviour
 {
     public float TimeLeft;
     public float time;
-    public int nexScene;
     public bool timeOn = false;
     
     public void start()
     {
         timeOn = true;
+        Debug.Log(GameVariables.lastScene);
         //TimeLeft = 10.0F;
     }
 
     public void Update()
     {
-        Debug.Log(TimeLeft);
+        //Debug.Log(TimeLeft);
         if (timeOn)
         {
             //Debug.Log(TimeLeft);
@@ -39,7 +35,14 @@ public class sceneTransition : MonoBehaviour
 
     public void changeScene()
     {
-        SceneManager.LoadScene(nexScene);
+        if (GameVariables.lastScene == 1)
+        {
+            SceneManager.LoadScene(2);
+        } else if (GameVariables.lastScene == 2)
+        {
+            SceneManager.LoadScene(3);
+        }
+
     }
     float updateTimer(float currentTime)
     {
