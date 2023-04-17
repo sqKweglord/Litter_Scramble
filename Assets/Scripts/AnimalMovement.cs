@@ -11,6 +11,7 @@ public class AnimalMovement : MonoBehaviour
     private Vector3 minWalkPoint;
     private Vector3 maxWalkPoint;
     //define sprite movement values and states
+    private int excludeLitter = 0;
     public float moveSpeed;
     public bool isWalking;
     public float walkTime;
@@ -126,7 +127,7 @@ public class AnimalMovement : MonoBehaviour
     
     public void ChooseDirection() 
     {
-        //RNG generation
+        excludeLitter++;
         lastDirection = walkDirection;
         walkDirection = Random.Range(0, 5);//randomizes walk direction
         speedMod = Random.Range(0, 2); //randomizes walk distance
@@ -143,7 +144,14 @@ public class AnimalMovement : MonoBehaviour
             }
         }
         walkDir = walkDirection;
-        
-        
+        if (excludeLitter < 2)
+        {   
+            if(walkDirection == 4 || walkDirection == 5)
+            {
+                walkDirection = 3;
+            }
+
+        }
+
     }
 }

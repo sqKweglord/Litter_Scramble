@@ -1,17 +1,52 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class StartMenu : MonoBehaviour
 {
+    public GameObject creditsFirst, menuClosedFirst;
+    public GameObject canvas;
+
+    public float TimeLeft;
+
+    public void Update()
+    {
+        if (canvas.activeSelf)
+        {
+            if (TimeLeft <= 0.0)
+            {
+                closeCredits();
+            }
+            //Debug.Log(TimeLeft);
+            TimeLeft -= Time.deltaTime;
+        } else if (TimeLeft != 60f){
+            TimeLeft = 60f;
+        }
+        
+    }
     public void ChangeScene(int scene)
     {
         SceneManager.LoadScene(scene);
     }
 
-    public void QuitGame()
+    public void Credits()
     {
-        Application.Quit();
-        //for quiting in the editor, otherwise it'll look like its doing nothing
-        //UnityEditor.EditorApplication.isPlaying = false;
+        canvas.SetActive(true);
+        //EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(creditsFirst);
+    }
+
+    public void closeCredits()
+    {
+        canvas.SetActive(false);
+        //EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(menuClosedFirst);
+    }
+
+    float updateTimer(float currentTime)
+    {
+        currentTime += 1;
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        return seconds;
     }
 }
