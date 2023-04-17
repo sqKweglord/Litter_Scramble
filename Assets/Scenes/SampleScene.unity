@@ -2023,12 +2023,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2590a90ddb7124580f34e40a145c56, type: 3}
---- !u!1 &400844121 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6689232457522568862, guid: c033fb9e467c32f479c7a8fac1568b9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6689232457834773447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &403221807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 637525946}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &425229240
@@ -3344,12 +3338,6 @@ Transform:
   m_Father: {fileID: 1052726490}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &637525946 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6689232457716434926, guid: c033fb9e467c32f479c7a8fac1568b9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6689232457834773447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641629606
 GameObject:
   m_ObjectHideFlags: 0
@@ -8938,7 +8926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ab0dcf883a913469c353b333b0a499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 400844121}
   timerText: {fileID: 186380834}
   currentTime: 181
   countDown: 1
