@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class levelTimer : MonoBehaviour
 {
-    public GameObject gameOverScreen;
-
     [Header("Component")]
     public TextMeshProUGUI timerText;
 
@@ -20,9 +18,12 @@ public class levelTimer : MonoBehaviour
     public bool hasLimit;
     public float timerLimit;
 
+    private ScoreManager score;
+
     void Start()
     {
-        
+        score = GameObject.Find("Canvas").GetComponent<ScoreManager>();
+        GameVariables.lastScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -33,7 +34,7 @@ public class levelTimer : MonoBehaviour
         {
             currentTime = timerLimit;
             SetTimerText();
-            gameOver();
+            changeScene();
             enabled = false;
         }
 
@@ -48,15 +49,9 @@ public class levelTimer : MonoBehaviour
 
     }
 
-    public void restartGame()
+    public void changeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
-    }
-
-    public void gameOver()
-    {
-        gameOverScreen.SetActive(true);
-        Time.timeScale = 0;
+        GameVariables.score += score.getScore();
+        SceneManager.LoadScene(5);
     }
  }
