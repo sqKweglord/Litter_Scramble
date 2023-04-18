@@ -92,7 +92,12 @@ public class highScoreTable : MonoBehaviour
 
         int score = highscoreEntry.score;
         entryTransform.Find("scoreText").GetComponent<Text>().text = score.ToString();
-            
+        
+        //Checks if the current score is the new score and highlights the score green if it is.
+        if(highscoreEntry.newScore){
+        entryTransform.Find("posText").GetComponent<Text>().color = Color.blue;
+        entryTransform.Find("scoreText").GetComponent<Text>().color = Color.blue;
+        }
 
         transformList.Add(entryTransform);
         }
