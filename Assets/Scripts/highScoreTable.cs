@@ -14,6 +14,7 @@ public class highScoreTable : MonoBehaviour
     private static string path;
 
     private void Start() {
+        Debug.Log(Application.persistentDataPath);
         //path to file
         path = Application.persistentDataPath + "/scores.txt";
         
@@ -121,15 +122,25 @@ public class highScoreTable : MonoBehaviour
    //reads the new scores in from the file
     private static int[] ReadScores()
     {
-        StreamReader reader = new StreamReader(path);
-        string temp = reader.ReadToEnd();
-        reader.Close();
-
-        string[] scoresIn = temp.Split(',');
-        int[] arr = new int[scoresIn.Length - 1];
-        for(int i = 0; i < scoresIn.Length-1; i++)
+        int[] arr = new int[10];
+        try
         {
-            arr[i] = int.Parse(scoresIn[i]);   
+            StreamReader reader = new StreamReader(path);
+            string temp = reader.ReadToEnd();
+            reader.Close();
+
+            string[] scoresIn = temp.Split(',');
+            arr = new int[scoresIn.Length - 1];
+            for (int i = 0; i < scoresIn.Length - 1; i++)
+            {
+                arr[i] = int.Parse(scoresIn[i]);
+            }
+
+        } catch (IOException e) {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = 0;
+            }
         }
         
         return arr;
