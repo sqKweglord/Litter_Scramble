@@ -31,6 +31,7 @@ public class playerMovement : MonoBehaviour
 
     //input from input system
     private Vector2 moveVal;
+    private Vector3 PlayerInput;
 
     void OnMove(InputValue value)
     {
@@ -70,12 +71,9 @@ public class playerMovement : MonoBehaviour
         }
 
         //gets player input and converts to movement
-        Vector3 PlayerInput = new Vector3
-        {
-            x = -moveVal.x, //flipped for holofil
-            y = 0f,
-            z = moveVal.y
-        };
+        PlayerInput.x = -moveVal.x; //flipped for holofil
+        PlayerInput.y = 0f;
+        PlayerInput.z = moveVal.y;
 
         xval = PlayerInput.x;
         yval = PlayerInput.z;
