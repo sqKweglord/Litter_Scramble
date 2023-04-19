@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 
@@ -7,30 +8,33 @@ public class sceneTransition : MonoBehaviour
 {
     public float TimeLeft;
     public float time;
-    public bool timeOn = false;
-    
+    [Header("Component")]
+    public TextMeshProUGUI timerText;
+
     public void start()
     {
-        timeOn = true;
         Debug.Log(GameVariables.lastScene);
-        //TimeLeft = 10.0F;
+        Debug.Log(TimeLeft);
+        time = 10;
     }
 
     public void Update()
     {
         //Debug.Log(TimeLeft);
-        if (timeOn)
+        if (time != 0)
         {
-            //Debug.Log(TimeLeft);
-            if (TimeLeft <= 0.0)
-            {
-                //Debug.Log("call actDeact");
-                changeScene();
-            }
-            //Debug.Log(TimeLeft);
+            TimeLeft -= Time.deltaTime;
+            time = updateTimer(TimeLeft);
+            timerText.text = time.ToString();
         }
-        TimeLeft -= Time.deltaTime;
-        time = updateTimer(TimeLeft);
+        else
+        {
+            TimeLeft -= Time.deltaTime;
+            time = updateTimer(TimeLeft);
+            timerText.text = time.ToString();
+            Debug.Log("call actDeact");
+            changeScene();
+        }
     }
 
     public void changeScene()

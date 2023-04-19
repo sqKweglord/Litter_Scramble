@@ -20,7 +20,7 @@ public class StartMenu : MonoBehaviour
             //Debug.Log(TimeLeft);
             TimeLeft -= Time.deltaTime;
         } else if (TimeLeft != 60f){
-            TimeLeft = 60f;
+            TimeLeft = 80f;
         }
         
     }

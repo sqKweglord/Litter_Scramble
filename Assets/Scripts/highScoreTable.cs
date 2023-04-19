@@ -1,7 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Text;
+using System.Linq;
 
 public class highScoreTable : MonoBehaviour
 {
@@ -9,49 +11,62 @@ public class highScoreTable : MonoBehaviour
     private Transform entryTemplate;
     private List<HighscoreEntry> highscoreEntryList;
     private List<Transform> highscoreEntryTransformList;
+    private static string path;
 
-    private void Awake() {
+    private void Start() {
+        Debug.Log(Application.persistentDataPath);
+        //path to file
+        path = Application.persistentDataPath + "/scores.txt";
+        
+        //gets the current players score
+        int newScore = GameVariables.score;
+        //resets the current players score for when the game gets restart
+        GameVariables.score = 0;
+        //reads the old scores in from the file
+        int[] scores = ReadScores();
+        
+
       entryContainer = transform.Find("highScoreEntryContainer");
       entryTemplate = entryContainer.Find("highScoreEntryTemp");
 
       entryTemplate.gameObject.SetActive(false);
 
-      highscoreEntryList = new List<HighscoreEntry>(){
-        new HighscoreEntry{score = 521854, name = "AAA"},
-          new HighscoreEntry{score = 441854, name = "BOB"},
-            new HighscoreEntry{score = 881854, name = "JIM"},
-              new HighscoreEntry{score = 87854, name = "CRAIG"},
-                new HighscoreEntry{score = 52300054, name = "50CENT"},
-                  new HighscoreEntry{score = 11854, name = "KIMK"},
-                    new HighscoreEntry{score = 8781854, name = "SNOOPY"},
-          
-        };
+        highscoreEntryList = new List<HighscoreEntry>();
+
+        //adds scores to entry objects
+        foreach(int score in scores)
+        {
+            highscoreEntryList.Add(new HighscoreEntry { score = score });
+        }
 
         //Sorts the scores 
-        for(int i = 0; i < highscoreEntryList.Count; i++){
-            for(int j = i + 1; j < highscoreEntryList.Count; j++){
-                if(highscoreEntryList[j].score > highscoreEntryList[i].score){
-                    //swap
-                    HighscoreEntry tmp = highscoreEntryList[i];
-                    highscoreEntryList[i] = highscoreEntryList[j];
-                    highscoreEntryList[j] = tmp;
-                }
-            }
+        sortScores();
+
+        //adds the new score to replace the lowest
+        HighscoreEntry last = highscoreEntryList.Last();
+        last.score = newScore;
+        //sets new score to true so that we can check later which entry in the new one
+        last.newScore = true;
+
+        //sorts the scores again
+        sortScores();
+
+        //saves new scores to file
+        int[] newSaveScores = new int[scores.Length];
+        int counter = 0;
+        foreach(HighscoreEntry e in highscoreEntryList)
+        {
+            newSaveScores[counter] = e.score;
+            counter++;
         }
+        WriteScores(newSaveScores);
+
+
 
         highscoreEntryTransformList = new List<Transform>();
         foreach(HighscoreEntry highscoreEntry in highscoreEntryList){
             CreateHighScoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
-
-        //Using Playerprefs for saving and loading data.
-        //Using JsonUtility to convert an onject into Json.
-        HighScores highScores = new HighScores{highscoreEntryList = highscoreEntryList};
-        string json = JsonUtility.ToJson(highScores);
-        PlayerPrefs.SetString("highscoreTable", json);
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("highscoreTable"));
-   
     }
 
         //A function to add a new entry to the table
@@ -78,13 +93,76 @@ public class highScoreTable : MonoBehaviour
 
         int score = highscoreEntry.score;
         entryTransform.Find("scoreText").GetComponent<Text>().text = score.ToString();
-
-        string name = highscoreEntry.name;
-        entryTransform.Find("nameText").GetComponent<Text>().text = name;
-            
+        
+        //Checks if the current score is the new score and highlights the score green if it is.
+        if(highscoreEntry.newScore){
+        entryTransform.Find("posText").GetComponent<Text>().color = Color.blue;
+        entryTransform.Find("scoreText").GetComponent<Text>().color = Color.blue;
+        }
 
         transformList.Add(entryTransform);
         }
+
+    //writes scores to a file by converting an int[] to a format string, then overwriting the scores.txt file with the new string
+    private static void WriteScores(int[] arr)
+    {
+        StringBuilder sb = new StringBuilder();
+        string s;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            sb.Append(arr[i]).Append(",");
+        }
+        s = sb.ToString();
+
+        StreamWriter writer = new StreamWriter(path, false);
+        writer.WriteLine(s);
+        writer.Close();
+    }
+
+   //reads the new scores in from the file
+    private static int[] ReadScores()
+    {
+        int[] arr = new int[10];
+        try
+        {
+            StreamReader reader = new StreamReader(path);
+            string temp = reader.ReadToEnd();
+            reader.Close();
+
+            string[] scoresIn = temp.Split(',');
+            arr = new int[scoresIn.Length - 1];
+            for (int i = 0; i < scoresIn.Length - 1; i++)
+            {
+                arr[i] = int.Parse(scoresIn[i]);
+            }
+
+        } catch (IOException e) {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = 0;
+            }
+        }
+        
+        return arr;
+    }
+
+    //a sort function to re-order the HighscoreEntries from highest to lowest
+    private void sortScores()
+    {
+        for (int i = 0; i < highscoreEntryList.Count; i++)
+        {
+            for (int j = i + 1; j < highscoreEntryList.Count; j++)
+            {
+                if (highscoreEntryList[j].score > highscoreEntryList[i].score)
+                {
+                    //swap
+                    HighscoreEntry tmp = highscoreEntryList[i];
+                    highscoreEntryList[i] = highscoreEntryList[j];
+                    highscoreEntryList[j] = tmp;
+                }
+            }
+        }
+    }
 
     //The function below is to add a new score entry to the score board
 
@@ -110,7 +188,8 @@ public class highScoreTable : MonoBehaviour
         
     private class HighscoreEntry{
         public int score;
-        public string name;
+        public bool newScore = false;
+        //public string name;
     }
 
 }
