@@ -2,12 +2,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+
 public class StartMenu : MonoBehaviour
 {
     public GameObject creditsFirst, menuClosedFirst;
     public GameObject canvas;
 
     public float TimeLeft;
+
+     void Awake () {
+     QualitySettings.vSyncCount = 0;  // VSync must be disabled
+     Application.targetFrameRate = 30;
+ }
 
     public void Update()
     {

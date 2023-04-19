@@ -8,30 +8,23 @@ public class AnimalMovement : MonoBehaviour
     public Collider Walkarea;
     private bool atEdge;
     // define box collider value
-    private Vector3 minWalkPoint;
-    private Vector3 maxWalkPoint;
+    private Vector3 minWalkPoint, maxWalkPoint;
     //define sprite movement values and states
-    private int excludeLitter = 0;
-    public float moveSpeed;
+    private int excludeLitter = 0, walkDirection;
+    public float moveSpeed, walkTime, waitTime;
     public bool isWalking;
-    public float walkTime;
-    private float walkCounter;
-    public float waitTime;
-    private float waitCounter;
-    private int walkDirection;
-    private float lastDirection;
+    private float walkCounter, waitCounter, lastDirection;
     public int speedMod;
     private Rigidbody MyRigidbody;
     //defines Object spawnpoint
-    public float startX;
-    public float startY;
-    public float startZ;
+    public float startX, startY, startZ;
     //WAYPOING BASED MOVEMENT
     public GameObject[] waypoints;
     public GameObject player;
     public bool isWaypoint;
     public int current = 0;
     float WPradius = 1;
+    private Vector3 newPosition, startPosition;
 
 
     // Start is called before the first frame update
@@ -43,6 +36,8 @@ public class AnimalMovement : MonoBehaviour
         MyRigidbody = GetComponent<Rigidbody>();
         waitCounter = waitTime;
         walkCounter = walkTime;
+
+        startPosition = new Vector3(startX, startY, startZ);
 
         minWalkPoint = Walkarea.bounds.min;
         maxWalkPoint = Walkarea.bounds.max;
@@ -66,28 +61,28 @@ public class AnimalMovement : MonoBehaviour
                     MyRigidbody.velocity = new Vector3(0, startY, moveSpeed + speedMod);
                     if (transform.position.z > maxWalkPoint.z)
                     {
-                        transform.position = new Vector3(startX, startY, startZ);
+                        transform.position = startPosition;
                     }
                     break;
                 case 1:
                     MyRigidbody.velocity = new Vector3(moveSpeed + speedMod, startY, 0);
                     if (transform.position.x > maxWalkPoint.x)
                     {
-                        transform.position = new Vector3(startX, startY, startZ);
+                        transform.position = startPosition;
                     }
                     break;
                 case 2:
                     MyRigidbody.velocity = new Vector3(0, startY, -moveSpeed - speedMod);
                     if (transform.position.z < minWalkPoint.z)
                     {
-                        transform.position = new Vector3(startX, startY, startZ);
+                        transform.position = startPosition;
                     }
                     break;
                 case 3:
                     MyRigidbody.velocity = new Vector3(-moveSpeed - speedMod, startY, 0);
                     if (transform.position.x < minWalkPoint.x)
                     {
-                        transform.position = new Vector3(startX, startY, startZ);
+                        transform.position = startPosition;
                     }
                     break;
                 default:
@@ -99,7 +94,9 @@ public class AnimalMovement : MonoBehaviour
                             current = 0;
                         }
                     }
-                    Vector3 newPosition = new Vector3(waypoints[current].transform.position.x, transform.position.y, waypoints[current].transform.position.z);
+                    newPosition.x = waypoints[current].transform.position.x;
+                    newPosition.y = waypoints[current].transform.position.y;
+                    newPosition.z = waypoints[current].transform.position.z;
                     transform.position = Vector3.MoveTowards(transform.position, newPosition, Time.deltaTime * moveSpeed);
                     break;
             }
