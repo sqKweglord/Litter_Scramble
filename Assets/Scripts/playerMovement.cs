@@ -62,11 +62,11 @@ public class playerMovement : MonoBehaviour
     {
         if (rtRight)
         {
-            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
+            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
         }
         if (rtLeft)
         {
-            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
+            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
         }
 
         //gets player input and converts to movement
