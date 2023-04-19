@@ -13,8 +13,8 @@ public class sceneTransition : MonoBehaviour
 
     public void start()
     {
-        Debug.Log(GameVariables.lastScene);
-        Debug.Log(TimeLeft);
+        //Debug.Log(GameVariables.lastScene);
+        //Debug.Log(TimeLeft);
         time = 10;
     }
 
@@ -32,7 +32,7 @@ public class sceneTransition : MonoBehaviour
             TimeLeft -= Time.deltaTime;
             time = updateTimer(TimeLeft);
             timerText.text = time.ToString();
-            Debug.Log("call actDeact");
+            //Debug.Log("call actDeact");
             changeScene();
         }
     }

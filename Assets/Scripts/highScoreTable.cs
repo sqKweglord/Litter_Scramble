@@ -14,7 +14,7 @@ public class highScoreTable : MonoBehaviour
     private static string path;
 
     private void Start() {
-        Debug.Log(Application.persistentDataPath);
+        //Debug.Log(Application.persistentDataPath);
         //path to file
         path = Application.persistentDataPath + "/scores.txt";
         
