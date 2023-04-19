@@ -120,11 +120,11 @@ public class playerMovement : MonoBehaviour
 
         if ((rtLeft) || (rtRight) || (moveVal.y != 0 || moveVal.x != 0))
         {
-            GameManager.Instance.anyInput = true;
+            GameVariables.anyInput = true;
         }
         else
         {
-            GameManager.Instance.anyInput = false;
+            GameVariables.anyInput = false;
         }
 
 

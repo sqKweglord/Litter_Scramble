@@ -20,7 +20,7 @@ public class inactivityTimer : MonoBehaviour
     void Update()
     {
         //Debug.Log(GameManager.Instance.anyInput);
-        if (!GameManager.Instance.anyInput) {
+        if (!GameVariables.anyInput) {
             currentTime = currentTime += Time.deltaTime;
             if (currentTime > inactivityTime)
             {
