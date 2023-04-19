@@ -72,7 +72,7 @@ public class playerMovement : MonoBehaviour
         //gets player input and converts to movement
         Vector3 PlayerInput = new Vector3
         {
-            x = -moveVal.x, //flipped for holofil
+            x = moveVal.x,
             y = 0f,
             z = moveVal.y
         };
