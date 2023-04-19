@@ -372,8 +372,6 @@ GameObject:
   - component: {fileID: 148064476}
   - component: {fileID: 148064477}
   - component: {fileID: 148064479}
-  - component: {fileID: 148064480}
-  - component: {fileID: 148064481}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -480,116 +478,6 @@ MonoBehaviour:
   m_DefaultActionMap: GamePlay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &148064480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148064466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288130be56b4cba49aff3d53de868e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footstep1: {fileID: 148064481}
-  player: {fileID: 148064466}
---- !u!82 &148064481
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148064466}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d8fcda08caa914141b8f4586789676f0, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.6
-  m_Pitch: 0.75
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &156152859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2418,7 +2306,6 @@ GameObject:
   - component: {fileID: 1032340241}
   - component: {fileID: 1032340245}
   - component: {fileID: 1032340243}
-  - component: {fileID: 1032340242}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -2441,26 +2328,6 @@ Transform:
   m_Father: {fileID: 1987007384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1032340242
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032340240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fec3b83b864b5f4397fd5baba441fe3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &1032340243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2575,9 +2442,9 @@ MonoBehaviour:
   walkDir: 0
   Walkarea: {fileID: 1453561671}
   moveSpeed: 3
-  isWalking: 0
   walkTime: 2
   waitTime: 1
+  isWalking: 0
   speedMod: 0
   startX: 0.49
   startY: 0
@@ -3300,7 +3167,6 @@ GameObject:
   - component: {fileID: 1245626033}
   - component: {fileID: 1245626037}
   - component: {fileID: 1245626035}
-  - component: {fileID: 1245626034}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -3323,26 +3189,6 @@ Transform:
   m_Father: {fileID: 1406327420}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1245626034
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245626032}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c6d8e0fe77ba1ae499d95b81fdd90944, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &1245626035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3785,9 +3631,9 @@ MonoBehaviour:
   walkDir: 0
   Walkarea: {fileID: 1453561671}
   moveSpeed: 3
-  isWalking: 0
   walkTime: 1
   waitTime: 1
+  isWalking: 0
   speedMod: 0
   startX: -5.16
   startY: 0
@@ -4190,7 +4036,6 @@ GameObject:
   - component: {fileID: 1703777573}
   - component: {fileID: 1703777577}
   - component: {fileID: 1703777575}
-  - component: {fileID: 1703777574}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -4213,26 +4058,6 @@ Transform:
   m_Father: {fileID: 1034760783}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1703777574
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703777572}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e709c38757adfe04e912ff77b4ead821, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &1703777575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5100,9 +4925,9 @@ MonoBehaviour:
   walkDir: 0
   Walkarea: {fileID: 1453561671}
   moveSpeed: 3
-  isWalking: 0
   walkTime: 1
   waitTime: 2
+  isWalking: 0
   speedMod: 0
   startX: -0.667
   startY: 0
