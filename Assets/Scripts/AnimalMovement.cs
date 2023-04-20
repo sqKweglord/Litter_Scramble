@@ -23,7 +23,7 @@ public class AnimalMovement : MonoBehaviour
     public bool isWaypoint;
     public int current = 0;
     float WPradius = 1;
-    private Vector3 newPosition, startPosition;
+    private Vector3 newPosition, startPosition, vector1, vector2, vector3, vector4;
 
 
     // Start is called before the first frame update
@@ -41,6 +41,11 @@ public class AnimalMovement : MonoBehaviour
         minWalkPoint = Walkarea.bounds.min;
         maxWalkPoint = Walkarea.bounds.max;
 
+        vector1 = new Vector3(0, startY, moveSpeed + speedMod);
+        vector2 = new Vector3(moveSpeed + speedMod, startY, 0);
+        vector3 = new Vector3(0, startY, -moveSpeed - speedMod);
+        vector4 = new Vector3(-moveSpeed - speedMod, startY, 0);
+
         SpawnLitter litter = GameObject.Find("LitterParent").GetComponent<SpawnLitter>();
          waypoints = litter.litterArr; 
         ChooseDirection(); // intial call to direction function
@@ -57,28 +62,28 @@ public class AnimalMovement : MonoBehaviour
             {
 
                 case 0:
-                    MyRigidbody.velocity = new Vector3(0, startY, moveSpeed + speedMod);
+                    MyRigidbody.velocity = vector1;
                     if (transform.position.z > maxWalkPoint.z)
                     {
                         transform.position = startPosition;
                     }
                     break;
                 case 1:
-                    MyRigidbody.velocity = new Vector3(moveSpeed + speedMod, startY, 0);
+                    MyRigidbody.velocity = vector2;
                     if (transform.position.x > maxWalkPoint.x)
                     {
                         transform.position = startPosition;
                     }
                     break;
                 case 2:
-                    MyRigidbody.velocity = new Vector3(0, startY, -moveSpeed - speedMod);
+                    MyRigidbody.velocity = vector3;
                     if (transform.position.z < minWalkPoint.z)
                     {
                         transform.position = startPosition;
                     }
                     break;
                 case 3:
-                    MyRigidbody.velocity = new Vector3(-moveSpeed - speedMod, startY, 0);
+                    MyRigidbody.velocity = vector4;
                     if (transform.position.x < minWalkPoint.x)
                     {
                         transform.position = startPosition;

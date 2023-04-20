@@ -103,19 +103,19 @@ public class playerMovement : MonoBehaviour
         //keeps player within allowed game space
         if (transform.position.x > maxWalkPoint.x)
         {
-            transform.position = new Vector3(maxWalkPoint.x, transform.position.y, transform.position.z);
+            transform.position.x = maxWalkPoint.x;
         } else if (transform.position.x < minWalkPoint.x)
         {
-            transform.position = new Vector3(minWalkPoint.x, transform.position.y, transform.position.z);
+            transform.position.x = minWalkPoint.x;
         }
 
         if (transform.position.z > maxWalkPoint.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, maxWalkPoint.z);
+            transform.position.z = maxWalkPoint.z;
         }
         else if (transform.position.z < minWalkPoint.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, minWalkPoint.z);
+            ransform.position.z = minWalkPoint.z;
         }
 
         if ((rtLeft) || (rtRight) || (moveVal.y != 0 || moveVal.x != 0))
