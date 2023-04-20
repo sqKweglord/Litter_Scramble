@@ -4172,7 +4172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 186380834}
-  currentTime: 26
+  currentTime: 181
   countDown: 1
   hasLimit: 1
   timerLimit: 0
@@ -4224,8 +4224,8 @@ MonoBehaviour:
   - {fileID: 1221982207}
   - {fileID: 2009199191}
   - {fileID: 326248394}
-  TimeLeft: 0
-  TimerOn: 0
+  TimeLeft: 10
+  TimerOn: 1
 --- !u!1 &1772043813
 GameObject:
   m_ObjectHideFlags: 0
