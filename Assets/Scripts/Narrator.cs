@@ -1,14 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 
 public class Narrator : MonoBehaviour
 {
     [SerializeField] public AudioSource[] sbites;
-    public float time;
     private int i = 0;
     public float TimeLeft;
     public bool TimerOn = false;
@@ -26,7 +21,6 @@ public class Narrator : MonoBehaviour
             if (TimeLeft > 0)
             {
                 TimeLeft -= Time.deltaTime;
-                time = updateTimer(TimeLeft);
             }
             else
             {
@@ -39,12 +33,5 @@ public class Narrator : MonoBehaviour
     {
         sbites[x].Play();
         i++;
-    }
-
-    float updateTimer(float currentTime)
-    {
-        currentTime += 1;
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-        return seconds;
     }
 }

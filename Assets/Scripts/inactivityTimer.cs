@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class inactivityTimer : MonoBehaviour
 {
@@ -20,7 +15,7 @@ public class inactivityTimer : MonoBehaviour
     void Update()
     {
         //Debug.Log(GameManager.Instance.anyInput);
-        if (!GameManager.Instance.anyInput) {
+        if (!GameVariables.anyInput) {
             currentTime = currentTime += Time.deltaTime;
             if (currentTime > inactivityTime)
             {

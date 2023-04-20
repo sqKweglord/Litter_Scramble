@@ -6,7 +6,6 @@ public class AnimalMovement : MonoBehaviour
     // RANDOM DIRECTIONAL MOVEMENT
     // invoke box collider object to contain sprite movement to map
     public Collider Walkarea;
-    private bool atEdge;
     // define box collider value
     private Vector3 minWalkPoint, maxWalkPoint;
     //define sprite movement values and states
