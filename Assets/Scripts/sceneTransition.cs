@@ -15,7 +15,7 @@ public class sceneTransition : MonoBehaviour
     {
         //Debug.Log(GameVariables.lastScene);
         //Debug.Log(TimeLeft);
-        time = 10;
+        time = TimeLeft;
     }
 
     public void Update()
