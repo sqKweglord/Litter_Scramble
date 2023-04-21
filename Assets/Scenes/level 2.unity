@@ -2821,6 +2821,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6635813296516836043, guid: cc2bde30bf7e7764eb4230f41b1b43f0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 243429247, guid: fb5e184b3a5f594459c022e9bfa29491,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 6635813295038369184, guid: cc2bde30bf7e7764eb4230f41b1b43f0, type: 3}
     - {fileID: 6635813296516836042, guid: cc2bde30bf7e7764eb4230f41b1b43f0, type: 3}
