@@ -9,6 +9,7 @@ public class levelTimer : MonoBehaviour
 
     [Header("Timer Settings")]
     public float currentTime = 181f;
+    private int lastTime = 0;
     public bool countDown;
 
     [Header("Timer Limit Settings")]
@@ -34,16 +35,19 @@ public class levelTimer : MonoBehaviour
             changeScene();
             enabled = false;
         }
+        // if(displayed time != current time) { then -> update the time text
+        if((int) currentTime != lastTime) {
+            SetTimerText();
+        }
 
-        SetTimerText();
     }
 
     private void SetTimerText()
     {
+        lastTime = (int) currentTime;
         int minutes = (int)(currentTime / 60) % 60;
         int seconds = (int)(currentTime % 60);
         timerText.text = "Time Remaining " + string.Format("{0:0}:{1:00}", minutes, seconds);
-
     }
 
     public void changeScene()
