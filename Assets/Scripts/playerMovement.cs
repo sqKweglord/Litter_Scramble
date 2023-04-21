@@ -33,6 +33,8 @@ public class playerMovement : MonoBehaviour
     private Vector2 moveVal;
     private Vector3 PlayerInput;
 
+    private Vector3 position;
+
     void OnMove(InputValue value)
     {
         moveVal = value.Get<Vector2>();
@@ -63,11 +65,11 @@ public class playerMovement : MonoBehaviour
     {
         if (rtRight)
         {
-            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
+            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
         }
         if (rtLeft)
         {
-            transform.Rotate(Vector3.up, -50 * Time.deltaTime);
+            transform.Rotate(Vector3.up, 50 * Time.deltaTime);
         }
 
         //gets player input and converts to movement
@@ -99,23 +101,27 @@ public class playerMovement : MonoBehaviour
         Controller.Move(CurrentMoveVelocity * Time.deltaTime);
 
 
-
+        position = transform.position;
         //keeps player within allowed game space
-        if (transform.position.x > maxWalkPoint.x)
+        if (position.x > maxWalkPoint.x)
         {
-            transform.position.x = maxWalkPoint.x;
-        } else if (transform.position.x < minWalkPoint.x)
+            position.x = maxWalkPoint.x;
+            setPosition();
+        } else if (position.x < minWalkPoint.x)
         {
-            transform.position.x = minWalkPoint.x;
+            position.x = minWalkPoint.x;
+            setPosition();
         }
 
-        if (transform.position.z > maxWalkPoint.z)
+        if (position.z > maxWalkPoint.z)
         {
-            transform.position.z = maxWalkPoint.z;
+            position.z = maxWalkPoint.z;
+            setPosition();
         }
-        else if (transform.position.z < minWalkPoint.z)
+        else if (position.z < minWalkPoint.z)
         {
-            ransform.position.z = minWalkPoint.z;
+            position.z = minWalkPoint.z;
+            setPosition();
         }
 
         if ((rtLeft) || (rtRight) || (moveVal.y != 0 || moveVal.x != 0))
@@ -129,4 +135,9 @@ public class playerMovement : MonoBehaviour
 
 
     }
+
+    private void setPosition()
+    {
+        transform.position = position;
+    } 
 }
